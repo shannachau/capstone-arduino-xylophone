@@ -28,6 +28,24 @@ myBoard.on("ready", function() {
   myServo9.center();
   myServo10.center();
 
+  // callback that happens after a servo is moved from a keypress
+  // recenters the servo
+  function centerServoAfterMove(servo) {
+    servo.on("move:complete", function(){
+      console.log(' Moving a back to center')
+      servo.center();
+    });
+  }
+
+  centerServoAfterMove(myServo2);
+  centerServoAfterMove(myServo3);
+  centerServoAfterMove(myServo4);
+  centerServoAfterMove(myServo5);
+  centerServoAfterMove(myServo6);
+  centerServoAfterMove(myServo8);
+  centerServoAfterMove(myServo9);
+  centerServoAfterMove(myServo10);
+
   process.stdin.resume();
   process.stdin.setEncoding("utf8");
   process.stdin.setRawMode(true);
