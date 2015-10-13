@@ -35,10 +35,21 @@ myBoard.on("ready", function() {
   process.stdin.on("keypress", function(ch, key) {
 
     // moves certain servo when a certain letter is pressed
-
-    if ( key.name === 'a' ) {
-      console.log(' Moving Servo')
-      myServo2.to(180, 200);
+    function moveServo(letter, servo) {
+      if ( key.name === letter ) {
+        console.log(' Moving Servo')
+        servo.to(180, 200);
+      }
     }
+
+    moveServo('a', myServo2);
+    moveServo('s', myServo3);
+    moveServo('d', myServo4);
+    moveServo('f', myServo5);
+    moveServo('g', myServo6);
+    moveServo('h', myServo8);
+    moveServo('j', myServo9);
+    moveServo('k', myServo10);
+
   });
 });
