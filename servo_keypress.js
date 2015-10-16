@@ -32,7 +32,7 @@ myBoard.on("ready", function() {
   // recenters the servo
   function centerServoAfterMove(servo) {
     servo.on("move:complete", function(){
-      console.log(' Moving a back to center')
+      console.log("Moving back to center");
       servo.center();
     });
   }
