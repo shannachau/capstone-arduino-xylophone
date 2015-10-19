@@ -9,26 +9,26 @@ myBoard = new five.Board();
 myBoard.on("ready", function() {
 
   // create servo instances
-  myServo2 = new five.Servo(2);
-  myServo3 = new five.Servo(3);
-  myServo4 = new five.Servo(4);
-  myServo5 = new five.Servo(5);
-  myServo6 = new five.Servo(6);
+  Servo2 = new five.Servo(2);
+  Servo3 = new five.Servo(3);
+  Servo4 = new five.Servo(4);
+  Servo5 = new five.Servo(5);
+  Servo6 = new five.Servo(6);
 
-  myServo8 = new five.Servo(8);
-  myServo9 = new five.Servo(9);
-  myServo10 = new five.Servo(10);
+  Servo8 = new five.Servo(8);
+  Servo9 = new five.Servo(9);
+  Servo10 = new five.Servo(10);
 
   // center all servos before keypresses happen
-  myServo2.center();
-  myServo3.center();
-  myServo4.center();
-  myServo5.center();
-  myServo6.center();
+  Servo2.center();
+  Servo3.center();
+  Servo4.center();
+  Servo5.center();
+  Servo6.center();
 
-  myServo8.center();
-  myServo9.center();
-  myServo10.center();
+  Servo8.center();
+  Servo9.center();
+  Servo10.center();
 
   // callback that happens after a servo is moved from a keypress
   // recenters the servo
@@ -39,68 +39,30 @@ myBoard.on("ready", function() {
     });
   }
 
-  centerServoAfterMove(myServo2);
-  centerServoAfterMove(myServo3);
-  centerServoAfterMove(myServo4);
-  centerServoAfterMove(myServo5);
-  centerServoAfterMove(myServo6);
-  centerServoAfterMove(myServo8);
-  centerServoAfterMove(myServo9);
-  centerServoAfterMove(myServo10);
+  centerServoAfterMove(Servo2);
+  centerServoAfterMove(Servo3);
+  centerServoAfterMove(Servo4);
+  centerServoAfterMove(Servo5);
+  centerServoAfterMove(Servo6);
+  centerServoAfterMove(Servo8);
+  centerServoAfterMove(Servo9);
+  centerServoAfterMove(Servo10);
 
-  // function moveServo(letter, servo) {
-  //   console.log(' Moving Servo')
-  //   servo.to(180, 200);
-  // }
+  // creating hash table to map the string from ln 64 to servo object
+  var servoStringtoObject = {};
 
-  socket.on('servo2', function(test){
-    myServo2.to(180, 200);
+  servoStringtoObject["Servo2"] = Servo2;
+  servoStringtoObject["Servo3"] = Servo3;
+  servoStringtoObject["Servo4"] = Servo4;
+  servoStringtoObject["Servo5"] = Servo5;
+  servoStringtoObject["Servo6"] = Servo6;
+  servoStringtoObject["Servo8"] = Servo8;
+  servoStringtoObject["Servo9"] = Servo9;
+  servoStringtoObject["Servo10"] = Servo10;
+
+  // listen for specific event to trigger servo movement
+  socket.on('moveServo', function(servo){
+    servoStringtoObject[servo].to(180, 200)
+    console.log("Moving " + servo);
   });
-
-  socket.on('servo3', function(test){
-    myServo3.to(180, 200);
-  });
-
-  socket.on('servo4', function(test){
-    myServo4.to(180, 200);
-  });
-
-  socket.on('servo5', function(test){
-    myServo5.to(180, 200);
-  });
-
-  socket.on('servo6', function(test){
-    myServo6.to(180, 200);
-  });
-
-  socket.on('servo8', function(test){
-    myServo8.to(180, 200);
-  });
-
-  socket.on('servo9', function(test){
-    myServo9.to(180, 200);
-  });
-
-  socket.on('servo10', function(test){
-    myServo10.to(180, 200);
-  });
-
-
-  // process.stdin.resume();
-  // process.stdin.setEncoding("utf8");
-  // process.stdin.setRawMode(true);
-  //
-  // process.stdin.on("keypress", function(ch, key) {
-
-    // moves certain servo when a certain letter is pressed
-
-  //   moveServo('s', myServo3);
-  //   moveServo('d', myServo4);
-  //   moveServo('f', myServo5);
-  //   moveServo('g', myServo6);
-  //   moveServo('h', myServo8);
-  //   moveServo('j', myServo9);
-  //   moveServo('k', myServo10);
-  //
-  // });
 });
