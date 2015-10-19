@@ -1,5 +1,5 @@
 var five = require('johnny-five');
-var client = require('socket.io-client')
+var client = require('socket.io-client');
 var socket = client.connect('http://localhost:8081');
 
 var myBoard = new five.Board();
