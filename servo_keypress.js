@@ -44,7 +44,7 @@ myBoard.on("ready", function() {
   centerServoAfterMove(Servo9);
   centerServoAfterMove(Servo10);
 
-  // creating hash table to map the string from ln 64 to servo object
+  // creating hash table to map the string from ln 60 to servo object
   var servoStringtoObject = {};
 
   servoStringtoObject['Servo2'] = Servo2;
