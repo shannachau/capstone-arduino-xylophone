@@ -1,13 +1,9 @@
 var five = require("johnny-five");
-// var keypress = require("keypress");
 var client = require('socket.io-client')
 var socket = client.connect('http://localhost:8081');
-var myBoard, myServo;
 
-// keypress(process.stdin);
-myBoard = new five.Board();
+var myBoard = new five.Board();
 myBoard.on("ready", function() {
-
   // create servo instances
   Servo2 = new five.Servo(2);
   Servo3 = new five.Servo(3);
