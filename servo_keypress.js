@@ -1,4 +1,4 @@
-var five = require("johnny-five");
+var five = require('johnny-five');
 var client = require('socket.io-client')
 var socket = client.connect('http://localhost:8081');
 
@@ -29,8 +29,8 @@ myBoard.on("ready", function() {
   // callback that happens after a servo is moved from a keypress
   // recenters the servo
   function centerServoAfterMove(servo) {
-    servo.on("move:complete", function(){
-      console.log("Moving back to center");
+    servo.on('move:complete', function(){
+      console.log('Moving back to center');
       servo.center();
     });
   }
@@ -47,18 +47,18 @@ myBoard.on("ready", function() {
   // creating hash table to map the string from ln 64 to servo object
   var servoStringtoObject = {};
 
-  servoStringtoObject["Servo2"] = Servo2;
-  servoStringtoObject["Servo3"] = Servo3;
-  servoStringtoObject["Servo4"] = Servo4;
-  servoStringtoObject["Servo5"] = Servo5;
-  servoStringtoObject["Servo6"] = Servo6;
-  servoStringtoObject["Servo8"] = Servo8;
-  servoStringtoObject["Servo9"] = Servo9;
-  servoStringtoObject["Servo10"] = Servo10;
+  servoStringtoObject['Servo2'] = Servo2;
+  servoStringtoObject['Servo3'] = Servo3;
+  servoStringtoObject['Servo4'] = Servo4;
+  servoStringtoObject['Servo5'] = Servo5;
+  servoStringtoObject['Servo6'] = Servo6;
+  servoStringtoObject['Servo8'] = Servo8;
+  servoStringtoObject['Servo9'] = Servo9;
+  servoStringtoObject['Servo10'] = Servo10;
 
   // listen for specific event to trigger servo movement
   socket.on('moveServo', function(servo){
     servoStringtoObject[servo].to(180, 200)
-    console.log("Moving " + servo);
+    console.log('Moving ' + servo);
   });
 });
