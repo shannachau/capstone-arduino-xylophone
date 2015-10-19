@@ -1,8 +1,10 @@
 var five = require("johnny-five");
-var keypress = require("keypress");
+// var keypress = require("keypress");
+var client = require('socket.io-client')
+var socket = client.connect('http://localhost:8081');
 var myBoard, myServo;
 
-keypress(process.stdin);
+// keypress(process.stdin);
 myBoard = new five.Board();
 myBoard.on("ready", function() {
 
@@ -46,28 +48,59 @@ myBoard.on("ready", function() {
   centerServoAfterMove(myServo9);
   centerServoAfterMove(myServo10);
 
-  process.stdin.resume();
-  process.stdin.setEncoding("utf8");
-  process.stdin.setRawMode(true);
+  // function moveServo(letter, servo) {
+  //   console.log(' Moving Servo')
+  //   servo.to(180, 200);
+  // }
 
-  process.stdin.on("keypress", function(ch, key) {
+  socket.on('servo2', function(test){
+    myServo2.to(180, 200);
+  });
+
+  socket.on('servo3', function(test){
+    myServo3.to(180, 200);
+  });
+
+  socket.on('servo4', function(test){
+    myServo4.to(180, 200);
+  });
+
+  socket.on('servo5', function(test){
+    myServo5.to(180, 200);
+  });
+
+  socket.on('servo6', function(test){
+    myServo6.to(180, 200);
+  });
+
+  socket.on('servo8', function(test){
+    myServo8.to(180, 200);
+  });
+
+  socket.on('servo9', function(test){
+    myServo9.to(180, 200);
+  });
+
+  socket.on('servo10', function(test){
+    myServo10.to(180, 200);
+  });
+
+
+  // process.stdin.resume();
+  // process.stdin.setEncoding("utf8");
+  // process.stdin.setRawMode(true);
+  //
+  // process.stdin.on("keypress", function(ch, key) {
 
     // moves certain servo when a certain letter is pressed
-    function moveServo(letter, servo) {
-      if ( key.name === letter ) {
-        console.log(' Moving Servo')
-        servo.to(180, 200);
-      }
-    }
 
-    moveServo('a', myServo2);
-    moveServo('s', myServo3);
-    moveServo('d', myServo4);
-    moveServo('f', myServo5);
-    moveServo('g', myServo6);
-    moveServo('h', myServo8);
-    moveServo('j', myServo9);
-    moveServo('k', myServo10);
-
-  });
+  //   moveServo('s', myServo3);
+  //   moveServo('d', myServo4);
+  //   moveServo('f', myServo5);
+  //   moveServo('g', myServo6);
+  //   moveServo('h', myServo8);
+  //   moveServo('j', myServo9);
+  //   moveServo('k', myServo10);
+  //
+  // });
 });
