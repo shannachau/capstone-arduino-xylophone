@@ -5,12 +5,12 @@ var socket = client.connect('http://localhost:8081');
 var myBoard = new five.Board();
 myBoard.on("ready", function() {
   // create servo instances
+  // number corresponds to port number on Arduino
   Servo2 = new five.Servo(2);
   Servo3 = new five.Servo(3);
   Servo4 = new five.Servo(4);
   Servo5 = new five.Servo(5);
   Servo6 = new five.Servo(6);
-
   Servo8 = new five.Servo(8);
   Servo9 = new five.Servo(9);
   Servo10 = new five.Servo(10);
@@ -21,12 +21,11 @@ myBoard.on("ready", function() {
   Servo4.center();
   Servo5.center();
   Servo6.center();
-
   Servo8.center();
   Servo9.center();
   Servo10.center();
 
-  // callback that happens after a servo is moved from a keypress
+  // callback that happens after a servo is moved
   // recenters the servo
   function centerServoAfterMove(servo) {
     servo.on('move:complete', function(){
