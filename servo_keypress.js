@@ -25,8 +25,7 @@ myBoard.on("ready", function() {
   Servo9.center();
   Servo10.center();
 
-  // callback that happens after a servo is moved
-  // recenters the servo
+  // recenters the servo after it has moved
   function centerServoAfterMove(servo) {
     servo.on('move:complete', function(){
       console.log('Moving back to center');
