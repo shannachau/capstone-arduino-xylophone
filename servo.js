@@ -1,19 +1,24 @@
+// **COMMENTS** ARE FOR ADVANCED/CUSTOMIZATION SET UP
+
 var five = require('johnny-five');
 var client = require('socket.io-client');
 var socket = client.connect('http://localhost:8081');
+// ** USE COMMENTED LINE BELOW INSTEAD IF HOSTING SERVER ON LOCAL MACHINE **
+// var socket = client.connect('http://localhost:8081');
 
 var myBoard = new five.Board();
 myBoard.on("ready", function() {
   // create servo instances
   // number corresponds to port number on Arduino
-  Servo2 = new five.Servo(2);
-  Servo3 = new five.Servo(3);
-  Servo4 = new five.Servo(4);
-  Servo5 = new five.Servo(5);
-  Servo6 = new five.Servo(6);
-  Servo8 = new five.Servo(8);
-  Servo9 = new five.Servo(9);
-  Servo10 = new five.Servo(10);
+  var Servo2 = new five.Servo(2);
+  var Servo3 = new five.Servo(3);
+  var Servo4 = new five.Servo(4);
+  var Servo5 = new five.Servo(5);
+  var Servo6 = new five.Servo(6);
+  var Servo8 = new five.Servo(8);
+  var Servo9 = new five.Servo(9);
+  var Servo10 = new five.Servo(10);
+  // ** CREATE NEW SERVO INSTANCES HERE **
 
   // center all servos before keypresses happen
   Servo2.center();
@@ -24,6 +29,7 @@ myBoard.on("ready", function() {
   Servo8.center();
   Servo9.center();
   Servo10.center();
+  // ** CENTER NEW SERVO INSTANCES HERE **
 
   // recenters the servo after it has moved
   function centerServoAfterMove(servo) {
@@ -41,6 +47,7 @@ myBoard.on("ready", function() {
   centerServoAfterMove(Servo8);
   centerServoAfterMove(Servo9);
   centerServoAfterMove(Servo10);
+  // ** ADD NEW SERVO INSTANCES HERE **
 
   // creating hash table to map the string to servo object
   var servoStringtoObject = {};
@@ -53,6 +60,7 @@ myBoard.on("ready", function() {
   servoStringtoObject['Servo8'] = Servo8;
   servoStringtoObject['Servo9'] = Servo9;
   servoStringtoObject['Servo10'] = Servo10;
+  // ** ADD NEW KEY VALUE PAIR FOR NEW SERVOS HERE **
 
   // listen for specific event to trigger servo movement
   socket.on('moveServo', function(servo){
