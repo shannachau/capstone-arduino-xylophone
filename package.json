@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node servo.js"
-  }
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:shannachau/capstone-arduino-xylophone-server.git"
