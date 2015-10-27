@@ -7,6 +7,9 @@
     "keypress": "^0.2.1",
     "socket.io-client": "^1.3.7"
   },
+  "scripts": {
+    "start": "node servo.js"
+  }
   "repository": {
     "type": "git",
     "url": "git@github.com:shannachau/capstone-arduino-xylophone-server.git"
