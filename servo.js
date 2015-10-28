@@ -66,7 +66,7 @@ myBoard.on("ready", function() {
   socket.on('moveServo', function(servo){
     // moves the servo 180 degrees in 200ms
     // adjust these numbers to change the speed/angle at which your servo moves
-    servoStringtoObject[servo].to(180, 200)
+    servoStringtoObject[servo].to(180, 115)
     console.log('Moving ' + servo);
   });
 });
