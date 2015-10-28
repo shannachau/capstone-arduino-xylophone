@@ -6,7 +6,6 @@ var socket = client.connect('http://still-sands-6354.herokuapp.com:80');
 // ** USE COMMENTED LINE BELOW INSTEAD IF HOSTING SERVER ON LOCAL MACHINE **
 // var socket = client.connect('http://localhost:8081');
 
-console.log(socket);
 var myBoard = new five.Board();
 myBoard.on("ready", function() {
   // create servo instances
